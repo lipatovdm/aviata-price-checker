@@ -1,0 +1,37 @@
+<html>
+	<head>
+	<title>HUEST Mongo Aviata</title>
+	<meta charset="utf-8">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<h2>Направление: {{data.0.route.0.0}}-{{data.0.route.0.1}}</h2>
+		</div>
+		<div class="container-fluid">
+			 <table class="table">
+			 	<tr>
+			 		<th>Дата</th>
+			 		<th>Авиакомпания</th>
+			 		<th>Мин цена</th>
+			 		<th>Макс цена</th>
+			 		<th>Средняя цена</th>
+			 	</tr>
+			 	{% for item in data %}
+			 	{% for res in item.result%}
+				<tr>
+					<td>{{item._id.day}}.{{item._id.month}}.{{item._id.year}}</td>
+					<td>{{res.airline}}</td>
+					<td>{{res.min_price}}</td>
+					<td>{{res.max_price}}</td>
+					<td>{{res.avg_price}}</td>
+				</tr>
+				{% endfor %}
+			 	{% endfor %}
+			 </table>
+		 </div>
+	</body>
+</html>
